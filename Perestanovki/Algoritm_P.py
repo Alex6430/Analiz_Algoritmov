@@ -10,8 +10,8 @@ def P1(args_a):
 
 def P2(args_a, args_c, args_o):
     print(args_a, end=", ")
-    n = len(args_a) - 1
-    j, s = n, 0
+    n = len(args_a)
+    j, s = n-1, 0
     P4(args_a, args_c, args_o, j, s)
 
 
@@ -19,7 +19,7 @@ def P4(args_a, args_c, args_o, j, s):
     q = args_c[j] + args_o[j]
     if (q < 0):
         P7(args_a, args_c, args_o, j, s)
-    elif (q == j):
+    elif (q == (j+1)):
         P6(args_a, args_c, args_o, j, s)
     else:
         P5(args_a, args_c, args_o, j, s, q)
@@ -34,12 +34,15 @@ def P5(args_a, args_c, args_o, j, s, q):
 def P7(args_a, args_c, args_o, j, s):
     args_o[j] = -args_o[j]
     j -= 1
+    print()
     P4(args_a, args_c, args_o, j, s)
 
 
 def P6(args_a, args_c, args_o, j, s):
     if (j == 1):
         return
+        # print()
+        #P2(args_a, args_c, args_o)
     else:
         s += 1
     P7(args_a, args_c, args_o, j, s)
